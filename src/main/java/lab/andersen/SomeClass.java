@@ -1,4 +1,4 @@
 package lab.andersen;
 
-public class Dummy {
+public class SomeClass {
 }
