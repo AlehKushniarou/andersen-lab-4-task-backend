@@ -1,19 +1,18 @@
-package lab.andersen.model;
+package lab.andersen.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
+public class User {
 
     private int id;
     private int age;
     private String surname;
     private String name;
+    private String password;
 
 }

@@ -11,6 +11,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.io.File;
 import java.time.LocalDate;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.logging.Logger;
 
 @WebListener
@@ -23,8 +24,8 @@ public class PDFSenderListener implements ServletContextListener {
     private static final String BODY_MESSAGE = "Attaching files";
     private static final String SUBJECT_MESSAGE = "Activity of users";
     private static final String FULL_PATH_PDF = PropertiesUtils.get("pdf.base.url") + LocalDate.now() + ".pdf";
-    private static final int TARGET_HOUR = 20;
-    private static final int TARGET_MIN = 15;
+    private static final int TARGET_HOUR = 22;
+    private static final int TARGET_MIN = 21;
     private static final int TARGET_SEC = 0;
 
     @Override
@@ -47,10 +48,12 @@ public class PDFSenderListener implements ServletContextListener {
             logger.info("Messages to Telegram and email have been sent");
         });
         taskExecutor.startExecutionAt(TARGET_HOUR, TARGET_MIN, TARGET_SEC);
+
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         taskExecutor.stop();
     }
+
 }
